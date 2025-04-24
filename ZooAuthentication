@@ -1,0 +1,157 @@
+import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+//package zooauthentication;
+
+
+public class ZooAuthentication {
+
+   
+    public static void main(String[] args) throws IOException {
+        Scanner scnr = new Scanner(System.in);
+        AuthenticationSuccess user1 = new AuthenticationSuccess();
+        FileInputStream fileByteStream = null; //file input stream
+        Scanner inFS = null; //scanner object
+        String filePassword = ""; //Data value from file
+        String fileUserName = ""; //Data value from file
+        String userName = "";
+        String userPassword = "";
+        boolean inputQuit = false;
+        int i = 0;
+        String role = "";
+        String userQuit = ""; 
+        int j = 0;
+        String admin = "";
+        String zooKeeper = "";
+        String volunteer = "";
+        String veterinarian = "";
+        //create an Array value to read from credentials.txt
+        final int NUM_LINE = 50;
+        int[] zooArray = new int [NUM_LINE]; //creating number of arrays
+                
+        System.out.println("Opening the Credentials Screen");
+        fileByteStream = new FileInputStream("credentials.txt");
+        inFS = new Scanner(fileByteStream);
+        
+        for (i = 0; i < NUM_LINE; ++i) {
+            zooArray[i] = inFS.nextLine();//FIXME: INTEGER TO STRING THROWING ERROR
+      } //should populate each array with a string from credentials.txt
+                
+        System.out.println("Please enter your username: ");
+        userName = scnr.nextLine();
+        user1.setUserName(userName);
+        System.out.println("Please enter your password: ");
+        userPassword = scnr.nextLine();
+        user1.setUserPassword(userPassword);
+        System.out.println(user1.getUserPassword());
+              
+        while (i < 3){ //check if credentials.txt.lastIndexOf is correct
+            if (userPassword != credentials.txt.lastIndexOf(userPassword)|| userName != credentials.txt.lastIndexOf(userName)){
+        i++;
+        System.out.println("Username or Password incorrect: you have " + (3-i) + " trys left.");
+        }
+        if (userPassword == credentials.txt.lastIndexOf(userPassword) && userName == credentials.txt.lastIndexOf(userName)){
+            for (j = 0; j < 50; ++j){
+         if (zooArray[j] == userPassword) {//FIXME: INTEGER TO STRING THROWING ERROR
+             role = zooArray[j + 1];//FIXME: INTEGER TO STRING THROWING ERROR
+            System.out.println("Role: " + role);
+            }
+         }
+        }//finds role by array
+                
+                while (!inputQuit) {
+                    System.out.println("Press q to quit at any time");
+                     userQuit = scnr.nextLine();     
+      
+                        if (userQuit.charAt(0) == 'q') {
+                        inputQuit = true;
+                        break;
+                        }
+                        if (role == "zookeeper"){
+                            System.out.println("Opening Zookeeper file");
+                            fileByteStream = new FileInputStream("zookeeper.txt");
+                            inFS = new Scanner(fileByteStream);
+                            
+                            zooKeeper = inFS.nextLine();
+                            
+                            while (inFS.hasNextLine()) {
+                            System.out.println(zooKeeper);
+                            zooKeeper = inFS.nextLine();
+                            }
+                        }
+                            
+                            if (userQuit.charAt(0) == 'q') {
+                            System.out.println("Closing Zookeeper file");
+                            fileByteStream.close();
+                            }
+                            else{}
+                        }
+                        if (role == "admin"){
+                       System.out.println("Opening Administrative file");
+                            fileByteStream = new FileInputStream("admin.txt");
+                            inFS = new Scanner(fileByteStream);
+                            
+                            admin = inFS.nextLine();
+                            
+                            while (inFS.hasNextLine()) {
+                            System.out.println(admin);
+                            admin = inFS.nextLine();
+                            }
+                            
+                            if (userQuit.charAt(0) == 'q') {
+                            System.out.println("Closing Administrative file");
+                            fileByteStream.close();
+                            }
+                            else{}
+                        }
+                        if (role == "veterinarian"){
+                        System.out.println("Opening Veterinarian file");
+                            fileByteStream = new FileInputStream("veterinarian.txt");
+                            inFS = new Scanner(fileByteStream);
+                            
+                            veterinarian = inFS.nextLine();
+                            
+                            while (inFS.hasNextLine()) {
+                            System.out.println(veterinarian);
+                            veterinarian = inFS.nextLine();
+                            }
+                            if (userQuit.charAt(0) == 'q') {
+                            System.out.println("Closing Veterinarian file");
+                            fileByteStream.close();
+                            }
+                            else{}
+                        }
+                        if (role == "volunteer"){
+                        System.out.println("Opening Volunteer file");
+                            fileByteStream = new FileInputStream("volunteer.txt");
+                            inFS = new Scanner(fileByteStream);
+                            
+                            volunteer = inFS.nextLine();
+                            
+                            while (inFS.hasNextLine()) {
+                            System.out.println(volunteer);
+                            volunteer = inFS.nextLine();
+                            }
+                            if (userQuit.charAt(0) == 'q') {
+                            System.out.println("Closing Volunteer file");
+                            fileByteStream.close();
+                            }
+                            else{}
+                        }
+                    //needs to be tested.
+                     }
+        if (userQuit.charAt(0) == 'q') {
+        System.out.println("You are now exiting the program.");
+        }
+        else{
+            }
+    }
+    
+}
+    
+        
+      
+    
+    
+
