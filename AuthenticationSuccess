@@ -1,0 +1,59 @@
+import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+//package zooauthentication;
+
+
+public class AuthenticationSuccess {
+     Scanner scnr = new Scanner(System.in);
+        FileInputStream fileByteStream = null; //file input stream
+        Scanner inFS = null; //scanner object
+        String filePassword = ""; //Data value from file
+        String fileUserName = ""; //Data value from file
+        String userName = "";
+        String userPassword = "";
+        String fileCredentials = "";
+      
+   
+    public void setUserName(String inputName){
+        userName = inputName;
+        //Do I need to move scanner over here?
+        return;
+    }
+    public String getUserName(){
+        return userName;
+    }
+    public void setUserPassword(String inputPassword) {
+        userPassword = inputPassword;
+        //Do I need to move scanner over here?
+        return;
+    }
+    public String getUserPassword() {
+        //convert password to hash using code in final document(Need to test)
+        String original = userPassword;  
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(original.getBytes());
+		byte[] digest = md.digest();
+      StringBuffer sb = new StringBuffer();
+		for (byte b : digest) {
+			sb.append(String.format("%02x", b & 0xff));
+		}
+        return userPassword;
+    }
+    
+    public void setCredentials (String credentials) {
+    credentials = fileCredentials;
+    
+    return;
+    }
+    public String getCredentials () {
+    return fileCredentials;
+    }
+   //should I get/set credentials file?
+    
+    
+}
+
+    
+
